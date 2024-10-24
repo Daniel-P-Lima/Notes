@@ -33,3 +33,25 @@ Invocar processos quando for sua hora de execução
 - Configura a estrutura de controle do processo
 - Coloca o processo na lista do kernel de processos 
 - É utilizado o algoritmo de fila, First-in First-out
+# Protothread - Contiki
+- Permite estruturar o código de forma que o sistema execute outras atividades quando o código estiver esperando que algo aconteça 
+- São usados em vários sistemas como o linux 
+- É uma função regular no ```C```
+- Threads podem compartilhar um contexto de memória 
+A função começa e termina com duas macros especiais, ```PT_BEGIN() e PT_END()``` 
+## O processo implementa sua própria versão de protothreads
+```
+PROCESS_BEGIN()
+PROCESS_END()
+PROCESS_EXIT()
+PROCESS_WAIT_EVENT()
+```
+# Eventos
+## Assíncronos
+Um processo é executado quando recebe um evento 
+==Quando eventos assíncronos são postados, o evento é colocado na fila de eventos no kernel e entregue ao processo sequencialmente==  
+## Síncronos
+São entregues imediatamente quando postados, um atrás do outro
+## Identificador de eventos
+Eventos são identificados por um identificador de evento
+Todos os eventos tem IDS específicos para identificar o tal processo
