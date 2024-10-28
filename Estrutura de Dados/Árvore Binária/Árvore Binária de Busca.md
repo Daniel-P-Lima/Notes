@@ -64,7 +64,45 @@ Para esse caso temos duas estratégias para deixar menos trabalhoso:
 Em alguns casos é mais fácil não remover o nó e simplesmente atualizar sua informação
 Para remoção é necessário também usar recursividade 
 ## Calcular a altura de uma árvore
-Para calcular a altura de uma árvore é necessário conhecer o maior caminho de $X$ até um de seus descendentes. A altura de um nó $X$ somente pode ser calculada após a visita a todos os descendentes de $X$. Sendo a altura de um nó folha é $0$
+Para calcular a altura de uma árvore é necessário conhecer o maior caminho de $X$ até um de seus descendentes. A altura de um nó $X$ somente pode ser calculada após a visita a todos os descendentes de $X$. **Sendo a altura de um nó folha é $0$**
 Ir em todos os filhos e depois ir subindo aumentando o valor da altura, calculando de baixo para cima 
 Muito parecido com o algoritmo de travessia do pós-ordem
 Caso um nó tenha um filho null (não tenha filho), é atribuído o valor -1 
+```java
+public static int altura(Node no) {  
+    if (no == null) {  
+        return -1;  
+    }  
+    int esquerda = altura(no.getNoEsquerdo());  
+    int direita = altura(no.getNoDireito());  
+    if (esquerda > direita) {  
+        return 1 + esquerda;  
+    }  
+    return 1 + direita;  
+}
+```
+## Árvore Desbalanceada 
+Quando uma árvore binária está desbalanceada ela perde sua eficiência e é necessário balancear ela, tornando ela mais eficiente 
+==Qualquer alteração na árvore, seja inserir ou remover, é necessário balancear ==
+### Árvore AVL
+Fórmula do balanceamento, Fator de balanceamento 
+**O fator de balanceamento de uma folha sempre será $0$**
+Lembrar que se calcula o fator com a altura
+https://www.inf.ufsc.br/~aldo.vw/estruturas/simulador/AVL.html
+**==Fator de balanceamento = altura(node.getEsq() - altura(node.getDir()==**
+### Como identificar uma árvore desbalanceada
+Quando um determinado nó tiver o **fator de balanceamento igual ou maior que $2$**, ela está desbalanceada. **Os fatores de balanceamento sempre serão atualizados quando tiver alguma operação, não armazenar estaticamente**
+### Rotações 
+Técnica para balancear a árvore, baseado no nó que estourou 
+#### Rotação a esquerda
+Quando a árvore está desbalanceada para esquerda
+1. Node novaRaiz = raiz.direita
+2. Node temp = novaRaiz.esquerda
+3. novaRaiz.esquerda = raiz
+4. raiz.direita = temp
+### Casos Especiais
+Quando o pai é positivo e o filho é negativo ou pai negativo e filho positivo dizemos que são casos especiais, pois se tentar balancear vai ficar em um "balanceamento infinito"
+#### Primeiro caso
+Quando o o pai é negativo e o filho é positivo, vamos a rotação do filho à direita e o pai à esquerda, sendo o termo correto a rotação dupla esquerda
+#### Segundo caso
+Quando o o pai é positivo e o filho é negativo, vamos a rotação do filho à esquerda e o pai à direita, sendo o termo correta a rotação dupla direita
