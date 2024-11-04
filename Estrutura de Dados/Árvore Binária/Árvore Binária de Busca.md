@@ -96,10 +96,10 @@ Quando um determinado nó tiver o **fator de balanceamento igual ou maior que $2
 Técnica para balancear a árvore, baseado no nó que estourou 
 #### Rotação a esquerda
 Quando a árvore está desbalanceada para esquerda
-1. Node novaRaiz = raiz.direita
+1. Node novaRaiz = node.direita
 2. Node temp = novaRaiz.esquerda
-3. novaRaiz.esquerda = raiz
-4. raiz.direita = temp
+3. novaRaiz.esquerda = node
+4. node.direita = temp
 ### Casos Especiais
 Quando o pai é positivo e o filho é negativo ou pai negativo e filho positivo dizemos que são casos especiais, pois se tentar balancear vai ficar em um "balanceamento infinito"
 #### Primeiro caso

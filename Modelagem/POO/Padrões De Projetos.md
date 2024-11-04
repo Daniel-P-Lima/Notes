@@ -70,8 +70,76 @@
 writeObject(a1, " ")
 a1 = readObject(" ")
 ```
-## Composição
+## Composição (Composite)
 - Representar um objeto composto por outros objetos
 - **Aplicar em uma árvore de objetos**, com acesso uniforme
 - Como uma pasta raiz onde dentro tem mais pastas e essas pastas tem outras passas dentro que possuem arquivos
 ![[Captura de Tela 2024-10-28 às 11.30.24.png]]
+## Interpretador
+Não muda diferente do compositor
+# Operações
+## Decorador
+Uma fila de execução
+- Um indivíduo sendo apontado para outro indivíduo e assim por diante
+- ==Não existe mas uma árvore e sim uma fila ==
+Tela em branco <- Cabeçalho <- Scroll
+- Camadas atrás de camadas, primeiro uma tela em branco e depois ir decorando
+- Como a sala de aula:
+	1. Primeiro vazia
+	2. Agora com as paredes pintadas
+Cada elemento tem seus próprios métodos e atributos. Montando de forma dinâmica
+![[Captura de Tela 2024-11-04 às 10.03.05.png]]
+## Singleton
+Única porta de acesso para banco de dados
+![[Captura de Tela 2024-11-04 às 10.05.54.png]]
+ - Construtor privado, não deixa ninguém acessar ele
+ - Faz com que exista apenas uma instância do GerenciadorBD
+ - Usando o syncronized temos a garantia de sincronização em um ambiente multi thread
+ ![[Screenshot 2024-11-04 at 10-09-35 AULA 09 (RA03) Padrões de Projeto Modelagem de Sistemas Computacionais (Turma 4º A) - Ciência da Computação (Manhã) - 2024 _ 2º Sem.png]]
+
+## Command
+- Persistência de objetos, gravando em disco e sem precisar de banco de dados
+- Encapsula métodos em objetos, permitindo gravar em disco
+- É possível controlar sua seleção e sequenciamento, enfileirá-los, desfazê-los, permitindo tornar execução de operações mais flexíveis 
+![[Captura de Tela 2024-11-04 às 10.20.46.png]]
+1. O objeto ``ComandoRecortar`` tem o método ``executar()`` que vai chamar o método ``recortar()`` do documento
+2. Encapsulando o comando do Documento, criando uma instância do comando
+3. Salvar histórico de comandos em algum lugar 
+**Pilotagem de uma aeronave**
+1. Classe Piloto
+2. Classe Comando, com a composição de:
+	1. Classe ComandoLigar
+	2. Classe ComandoDesligar
+3. Classe Aeronave sendo singleton
+	1. Com os métodos ligar e desligar
+![[Captura de Tela 2024-11-04 às 10.41.15.png]]
+## Interpretador
+Composição é a mesma coisa
+- Permite analisar expressões aritméticas prefixadas 
+## State
+Permitir um objeto alterar o seu comportamento em função de alterações no seu estado interno
+- Cada estado vai ser uma classe
+- Todos os eventos serão métodos de todas as classes
+- Baseado no **Diagrama de Estados**
+![[Captura de Tela 2024-11-04 às 10.57.58.png]]
+
+- Os métodos herdados não podem ser usados porque retornam this, logo terá que implementar novos métodos nas classes de estados 
+- Caso seja executado um método que não esteja previsto na mudança de estado, vai acontecer nada e retornar this
+```java
+class Pedido {
+	private Estado estado;
+
+	public Pedido() {
+		this.estado = new Solicitado();
+	}
+
+	public boolean quotar() {
+		this.estado = this.estado.quotar(); // Atualiza o estado do Pedido
+	}
+
+	public boolean encomendar() {
+		this.estado = this.estado.encomendar();
+	}
+}
+
+```
