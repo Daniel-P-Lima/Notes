@@ -1,3 +1,4 @@
+![[Sistemas Ciberfísicos]]
 - Apenas um SO por máquina
 - Software e hardware altamente acoplados
 # Conjunto de Instruções (ISA)
