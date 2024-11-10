@@ -88,7 +88,7 @@ Quando uma árvore binária está desbalanceada ela perde sua eficiência e é n
 Fórmula do balanceamento, Fator de balanceamento 
 **O fator de balanceamento de uma folha sempre será $0$**
 Lembrar que se calcula o fator com a altura
-https://www.inf.ufsc.br/~aldo.vw/estruturas/simulador/AVL.html
+	https://www.inf.ufsc.br/~aldo.vw/estruturas/simulador/AVL.html
 **==Fator de balanceamento = altura(node.getEsq() - altura(node.getDir()==**
 ### Como identificar uma árvore desbalanceada
 Quando um determinado nó tiver o **fator de balanceamento igual ou maior que $2$**, ela está desbalanceada. **Os fatores de balanceamento sempre serão atualizados quando tiver alguma operação, não armazenar estaticamente**
