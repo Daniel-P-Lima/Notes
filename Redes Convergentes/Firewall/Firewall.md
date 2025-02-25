@@ -1,4 +1,4 @@
-![[Redes Convergentes]]
+	![[Redes Convergentes]]
 
 Faz parte de um conjunto de soluções para mitigar falhas e problemas dentro de uma empresa. O Firewall analisa a política de segurança implementada pelo administrador da rede, liberando ou não o pacote
 Funciona de maneira bidirecional, o que pode passar pela interface com origem interna, e o que pode entrar pela interface com origem externa 
@@ -34,18 +34,18 @@ Mapeamento **Out** na interface
 - O firewall percorre a tabela de orientado de cima para baixo
 - Importante para o TDE 2
 
-|   |   |   |   |   |   |   |   |   |   |
-|---|---|---|---|---|---|---|---|---|---|
-|filtro|regra|acao|sentido|protocolo|IPorigem|IPdestino|Porigem|Pdestino|ACK|
-|Firewall 1|1.1|P|I1 - in|TCP|200.17.98.0/24|*|>1023|80,443|0,1|
-|Firewall 1|1.2|P|I2 - in|TCP|*|200.17.98.0/24|80,433|>1023|1|
-|Firewall 1|2.1|P|I2 - in|TCP|*|200.17.98.2/32|>1023|80,433|0,1|
-|Firewall 1|2.2|P|I1 - in|TCP|200.17.98.2/32|*|80,433|>1023|1|
-|Firewall 1|3.1|P|I2 - in|UDP|*|200.17.98.4/32|>1023|53|NA|
-|Firewall 1|3.2|P|I1 - in|UDP|200.17.98.4/32|*|53|>1023|NA|
-|Firewall 1|4.1|P|I1 - in|TCP|200.17.98.3/32|*|>1023|25|0,1|
-|Firewall 1|4.2|P|I2 - in|TCP|*|200.17.98.3/32|25|>1023|1|
-|Firewall 1|5.1 (D)|N|*|*|*|*|*|*|*|
+|            |         |      |         |           |                |                |         |          |     |
+| ---------- | ------- | ---- | ------- | --------- | -------------- | -------------- | ------- | -------- | --- |
+| filtro     | regra   | acao | sentido | protocolo | IPorigem       | IPdestino      | Porigem | Pdestino | ACK |
+| Firewall 1 | 1.1     | P    | I1 - in | TCP       | 200.17.98.0/24 | *              | >1023   | 80,443   | 0,1 |
+| Firewall 1 | 1.2     | P    | I2 - in | TCP       | *              | 200.17.98.0/24 | 80,433  | >1023    | 1   |
+| Firewall 1 | 2.1     | P    | I2 - in | TCP       | *              | 200.17.98.2/32 | >1023   | 80,433   | 0,1 |
+| Firewall 1 | 2.2     | P    | I1 - in | TCP       | 200.17.98.2/32 | *              | 80,433  | >1023    | 1   |
+| Firewall 1 | 3.1     | P    | I2 - in | UDP       | *              | 200.17.98.4/32 | >1023   | 53       | NA  |
+| Firewall 1 | 3.2     | P    | I1 - in | UDP       | 200.17.98.4/32 | *              | 53      | >1023    | NA  |
+| Firewall 1 | 4.1     | P    | I1 - in | TCP       | 200.17.98.3/32 | *              | >1023   | 25       | 0,1 |
+| Firewall 1 | 4.2     | P    | I2 - in | TCP       | *              | 200.17.98.3/32 | 25      | >1023    | 1   |
+| Firewall 1 | 5.1 (D) | N    | *       | *         | *              | *              | *       | *        | *   |
 ## Cenário ideal para redes
 - Servidores separados das máquinas, em redes diferentes
 - Rede interna
